@@ -1,34 +1,19 @@
 import React from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import './App.css'
+import Users from './Users'
+import Menu from './Menu'
 
 function App() {
-  const renderRows = [
-    { name: 'Eduardo', email: 'lalo@gmail.com', contact: '@lalo' },
-    { name: 'Sebas', email: 'sebas@gmail.com', contact: '@sebastian' }
-  ]
 
   return (
-    <div className='container'>
-      <table className='table'>
-        <thead>
-          <tr>
-            <th>Nombre</th>
-            <th>Correo</th>
-            <th>Enlace</th>
-          </tr>
-        </thead>
-        <tbody>
-          {renderRows.map((item) => (
-            <tr key={item.email}>
-              <td>{item.name}</td>
-              <td>{item.email}</td>
-              <td>{item.contact}</td>
-            </tr>
-          ))}
-
-        </tbody>
-      </table>
-    </div>
+    <BrowserRouter>
+      <Menu />
+      <Switch>
+        <Route exact path='/' component={Users} />
+        <Route exact path='/tareas'><h1>Tareas</h1></Route>
+      </Switch>
+    </BrowserRouter>
   );
 }
 
